@@ -1,0 +1,40 @@
+<MainLayout>:
+    orientation: 'vertical'
+
+    MDBottomNavigation:
+        canvas.before:
+            Color:
+                rgba: 0.247, 0.576, 0.604, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                
+        panel_color: 0.153, 0.153, 0.153
+
+        MDBottomNavigationItem:
+            name: 'screen_guides'
+            text: 'Guias'
+            icon: 'book'
+
+            MDLabel:
+                text: 'Guias e tutoriais'
+                halign: 'center'
+        
+        MDBottomNavigationItem:
+            name: 'screen_home'
+            text: 'Início'
+            icon: 'home'
+
+            MDLabel:
+                text: 'Página inicial'
+                halign: 'center'
+
+        MDBottomNavigationItem:
+            name: 'screen_profile'
+            text: 'Perfil'
+            icon: 'account'
+
+            MDLabel:
+                text: 'Seu perfil'
+                halign: 'center'
+    
