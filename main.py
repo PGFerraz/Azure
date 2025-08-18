@@ -1,0 +1,15 @@
+# Importando Módulos
+import os
+from kivy.lang import Builder
+from kivymd.app import MDApp
+from gui.widgets import MainLayout
+
+# Classe MDApp principal
+class MainApp(MDApp):
+    def build(self):
+        # carrega o arquivo KV antes de retornar o layout
+        Builder.load_file(os.path.join(os.path.dirname(__file__), "gui", "mainlayout.kv"))
+        return MainLayout()
+
+# Criando e executando o objeto da classe MainApp
+MainApp().run()
