@@ -1,40 +1,207 @@
 <MainLayout>:
-    orientation: 'vertical'
+    orientation: "vertical"
 
-    MDBottomNavigation:
-        canvas.before:
-            Color:
-                rgba: 0.247, 0.576, 0.604, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
+    # Gerenciador de Telas/Menus
+    MDScreenManager:
+        id: screen_manager
+
+        # Tela de Guias
+        MDScreen:
+            name: "screen_guides"
+
+            MDLabel:
+                text: "Guias e tutoriais"
+                halign: "center"
+
+        # Tela Principal/Home
+        MDScreen:
+            name: "screen_home"
+
+            MDLabel:
+                text: "Página inicial"
+                halign: "center"
+
+        # Tela de Perfil
+        MDScreen:
+            name: "screen_profile"
+
+            # Layout Principal
+            MDFloatLayout:
+                md_bg_color: 0.122, 0.122, 0.145
                 
-        panel_color: 0.153, 0.153, 0.153
+                # Linha Azul em cima da barra de navegação
+                Widget:
+                    size_hint: None, None
+                    size: root.width, dp(6)
+                    pos: 0, 0
+                    canvas:
+                        Color:
+                            rgba: 0, 0.6, 1, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                
+                # Linha Horizontal do texto "Diário"
+                Widget:
+                    size_hint: None, None
+                    size: self.parent.width, dp(2)
+                    pos: 0, self.parent.height - dp(147)
+                    
+                    canvas:
+                        Color:
+                            rgba: 0, 0.6, 1, 1
+                        Line:
+                            points: [self.parent.width*0.25, self.y, self.parent.width*1.01, self.y]
+                            width: 1
+                
+                # Linha Horizontal do texto "Mensal"
+                Widget:
+                    size_hint: None, None
+                    size: self.parent.width, dp(2)
+                    pos: 0, self.parent.height - dp(412)
+                    
+                    canvas:
+                        Color:
+                            rgba: 0, 0.6, 1, 1
+                        Line:
+                            points: [self.parent.width*0.29, self.y, self.parent.width*1.01, self.y]
+                            width: 1
 
-        MDBottomNavigationItem:
-            name: 'screen_guides'
-            text: 'Guias'
-            icon: 'book'
+                # Nome de Usuário
+                MDLabel:
+                    text: "Username"
+                    size_hint: 0.18, 0.13
+                    pos_hint: {"center_x": 0.35, "top": 0.96}
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                
+                # Texto "Diário"
+                MDLabel:
+                    text: "Diário"
+                    size_hint: 0.20, 0.13
+                    pos_hint: {"center_x": 0.16, "top": 0.87}
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    theme_font_size: "Custom"
+                    font_size: "24sp" 
+                
+                # Texto "Mensal"
+                MDLabel:
+                    text: "Mensal"
+                    size_hint: 0.20, 0.13
+                    pos_hint: {"center_x": 0.16, "top": 0.525}
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    theme_font_size: "Custom"
+                    font_size: "24sp" 
 
-            MDLabel:
-                text: 'Guias e tutoriais'
-                halign: 'center'
-        
-        MDBottomNavigationItem:
-            name: 'screen_home'
-            text: 'Início'
-            icon: 'home'
+                # Imagem de Perfil
+                Image:
+                    source: root._imgDefaultAvatar
+                    size_hint: 0.18, 0.13
+                    pos_hint: {"center_x": 0.14, "top": 0.96}
 
-            MDLabel:
-                text: 'Página inicial'
-                halign: 'center'
+                # Butão de configurações
+                MDIconButton:
+                    icon: "cog"
+                    pos_hint: {"center_x": 0.86, "top": 0.93}
+                    theme_icon_color: "Custom"
+                    icon_color: "white"
 
-        MDBottomNavigationItem:
-            name: 'screen_profile'
-            text: 'Perfil'
-            icon: 'account'
+                # Botão de Notificações
+                MDIconButton:
+                    icon: "bell"
+                    pos_hint: {"center_x": 0.70, "top": 0.93}
+                    theme_icon_color: "Custom"
+                    icon_color: "white"
 
-            MDLabel:
-                text: 'Seu perfil'
-                halign: 'center'
-    
+                # Gráfico Diário
+                Graph:
+                    id: profile_graph_day
+                    size_hint: 0.88, 0.30
+                    pos_hint: {"center_x": 0.5, "top": 0.785}
+                    xlabel: ""
+                    ylabel: "Nível (mg/dL)"
+                    xmin: 6
+                    xmax: 24
+                    ymin: 0
+                    ymax: 300
+                    x_ticks_minor: 1
+                    x_ticks_major: 6
+                    y_ticks_major: 70
+                    x_grid_label: True
+                    y_grid_label: True
+                    x_grid: True
+                    y_grid: True
+                    padding: 10
+                
+                # Gráfico Mensal
+                Graph:
+                    id: profile_graph_month
+                    size_hint: 0.88, 0.30
+                    pos_hint: {"center_x": 0.5, "top": 0.44}
+                    xlabel: ""
+                    ylabel: "Nível (mg/dL)"
+                    xmin: 6
+                    xmax: 24
+                    ymin: 0
+                    ymax: 300
+                    x_ticks_minor: 1
+                    x_ticks_major: 6
+                    y_ticks_major: 70
+                    x_grid_label: True
+                    y_grid_label: True
+                    x_grid: True
+                    y_grid: True
+                    padding: 10
+
+                # Imagem Glicemia
+                Image:
+                    source: root._imgRegGlic
+                    size_hint: 0.6, 0.4
+                    pos_hint: {"center_x": 0.52, "top": 0.28}
+
+                # Botão de registrar glicemia
+                MDButton:
+                    style: "filled"
+                    pos_hint: {"center_x": 0.58, "top": 0.105}
+                    size_hint: None, None
+                    size: "286dp", "40dp"
+
+                    MDButtonIcon:
+                        icon: "plus"
+
+                    MDButtonText:
+                        text: "Registrar Glicemia"
+                        font_style: "Title"
+                        theme_font_size: "Custom"
+                        font_size: "14sp" 
+
+    # Barra de Navegação Inferior
+    MDNavigationBar:
+        id: nav_bar
+
+        MDNavigationItem:
+            name: "screen_guides"
+            text: "Guias"
+            on_release: screen_manager.current = "screen_guides"
+            indicator_color: 0.153, 0.153, 0.153, 1
+
+            MDNavigationItemIcon:
+                icon: "book"
+
+        MDNavigationItem:
+            name: "screen_home"
+            text: "Início"
+            on_release: screen_manager.current = "screen_home"
+
+            MDNavigationItemIcon:
+                icon: "home"
+
+        MDNavigationItem:
+            name: "screen_profile"
+            text: "Perfil"
+            on_release: screen_manager.current = "screen_profile"
+
+            MDNavigationItemIcon:
+                icon: "account"
