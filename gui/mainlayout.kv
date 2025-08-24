@@ -17,9 +17,109 @@
         MDScreen:
             name: "screen_home"
 
-            MDLabel:
-                text: "Página inicial"
-                halign: "center"
+            MDFloatLayout:
+                md_bg_color: 0.122, 0.122, 0.145
+
+                Widget:
+                    size_hint: None, None
+                    size: root.width, dp(6)
+                    pos: 0, 0
+                    canvas:
+                        Color:
+                            rgba: 0, 0.6, 1, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+
+                MDLabel: 
+                    text: "Primeiros Passos"
+                    halign: "center"
+                    pos_hint: {'center_x':0.18, 'top':1.25}
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+
+                Widget:
+                    size_hint: None, None
+                    size: self.parent.width, dp(2)   
+                    pos: 0, self.parent.height - dp(155) 
+                    
+                    canvas:
+                        Color:
+                            rgba: 0, 0.6, 1, 1
+                        Line:
+                            points: [self.parent.width*0.35, self.y, self.parent.width*1.01, self.y]  
+                            width: 1
+                
+                MDButton:
+                    style: "filled"
+                    theme_width: "Custom"
+                    height: "60dp"
+                    size_hint_x: .4
+                    pos_hint: {'center_x':0.26, 'top':0.70}
+
+                    MDButtonIcon:
+                        icon: "account"
+
+                    MDButtonText:
+                        text: "Criando o seu \nPerfil"
+                        the_font_size: "custom"
+                        font_size: "8sp"
+
+                MDButton:
+                    style: "filled"
+                    theme_width: "Custom"
+                    height: "60dp"
+                    size_hint_x: .4
+                    pos_hint: {'center_x':0.74, 'top':0.70}
+
+                    MDButtonIcon:
+                        x: text.x - (self.width + dp(8))
+                        icon: "book"
+
+                    MDButtonText:
+                        id: text
+                        text: "Guias e \nTutoriais"
+                        pos_hint: {"center_x": .5, "center_y": .5}
+                
+                MDLabel: 
+                    text: "Fique por Dentro"
+                    halign: "center"
+                    pos_hint: {'center_x':0.18, 'top':1.00}
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+
+                Widget:
+                    size_hint: None, None
+                    size: self.parent.width, dp(2)   
+                    pos: 0, self.parent.height - dp(310) 
+                    
+                    canvas:
+                        Color:
+                            rgba: 0, 0.6, 1, 1
+                        Line:
+                            points: [self.parent.width*0.35, self.y, self.parent.width*1.01, self.y]  
+                            width: 1
+                
+                MDIconButton:
+                    icon: "cog"
+                    style: "standard"
+                    size_hint: 0.15, 0.08
+                    pos_hint: {"center_x": 0.86, "top": 0.94}
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.122, 0.122, 0.145
+                    theme_icon_color: "Custom"
+                    icon_color: "white"
+
+                MDIconButton:
+                    icon: "bell"
+                    style: "standard"
+                    size_hint: 0.15, 0.08
+                    pos_hint: {"center_x": 0.70, "top": 0.94}
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.122, 0.122, 0.145
+                    theme_icon_color: "Custom"
+                    icon_color: "white"
+
 
         # Tela de Perfil
         MDScreen:
@@ -204,4 +304,5 @@
             on_release: screen_manager.current = "screen_profile"
 
             MDNavigationItemIcon:
+
                 icon: "account"
