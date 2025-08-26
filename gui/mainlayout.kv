@@ -1,3 +1,5 @@
+#:import FitImage kivymd.uix.fitimage.FitImage
+
 <MainLayout>:
     orientation: "vertical"
 
@@ -17,9 +19,11 @@
         MDScreen:
             name: "screen_home"
 
+            # Layout Principal
             MDFloatLayout:
                 md_bg_color: 0.122, 0.122, 0.145
 
+                # Linha Azul em cima da barra de navegação
                 Widget:
                     size_hint: None, None
                     size: root.width, dp(6)
@@ -34,10 +38,11 @@
                 MDLabel: 
                     text: "Primeiros Passos"
                     halign: "center"
-                    pos_hint: {'center_x':0.18, 'top':1.25}
+                    pos_hint: {'center_x':0.18, 'top':1.29}
                     theme_text_color: "Custom"
                     text_color: 1, 1, 1, 1
 
+                # Linha ao lado dos "Primeiros Passos"
                 Widget:
                     size_hint: None, None
                     size: self.parent.width, dp(2)   
@@ -50,12 +55,13 @@
                             points: [self.parent.width*0.35, self.y, self.parent.width*1.01, self.y]  
                             width: 1
                 
+                # Botão de criar seu Perfil
                 MDButton:
                     style: "filled"
                     theme_width: "Custom"
                     height: "60dp"
                     size_hint_x: .4
-                    pos_hint: {'center_x':0.26, 'top':0.70}
+                    pos_hint: {'center_x':0.26, 'top':0.75}
 
                     MDButtonIcon:
                         icon: "account"
@@ -65,12 +71,13 @@
                         the_font_size: "custom"
                         font_size: "8sp"
 
+                # Botão Atalho para os Guias
                 MDButton:
                     style: "filled"
                     theme_width: "Custom"
                     height: "60dp"
                     size_hint_x: .4
-                    pos_hint: {'center_x':0.74, 'top':0.70}
+                    pos_hint: {'center_x':0.74, 'top':0.75}
 
                     MDButtonIcon:
                         x: text.x - (self.width + dp(8))
@@ -81,13 +88,15 @@
                         text: "Guias e \nTutoriais"
                         pos_hint: {"center_x": .5, "center_y": .5}
                 
+                # Área de Notícias
                 MDLabel: 
                     text: "Fique por Dentro"
                     halign: "center"
-                    pos_hint: {'center_x':0.18, 'top':1.00}
+                    pos_hint: {'center_x':0.18, 'top':1.08}
                     theme_text_color: "Custom"
                     text_color: 1, 1, 1, 1
 
+                # Linha que Separa a Seção de Notícias
                 Widget:
                     size_hint: None, None
                     size: self.parent.width, dp(2)   
@@ -100,6 +109,7 @@
                             points: [self.parent.width*0.35, self.y, self.parent.width*1.01, self.y]  
                             width: 1
                 
+                # Botão de configurações
                 MDIconButton:
                     icon: "cog"
                     style: "standard"
@@ -110,6 +120,7 @@
                     theme_icon_color: "Custom"
                     icon_color: "white"
 
+                # Botão de Notificações
                 MDIconButton:
                     icon: "bell"
                     style: "standard"
@@ -119,7 +130,6 @@
                     md_bg_color: 0.122, 0.122, 0.145
                     theme_icon_color: "Custom"
                     icon_color: "white"
-
 
         # Tela de Perfil
         MDScreen:
@@ -201,7 +211,7 @@
                     size_hint: 0.18, 0.13
                     pos_hint: {"center_x": 0.14, "top": 0.96}
 
-                # Butão de configurações
+                # Botão de configurações
                 MDIconButton:
                     icon: "cog"
                     pos_hint: {"center_x": 0.86, "top": 0.93}

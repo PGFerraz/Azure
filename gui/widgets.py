@@ -1,13 +1,14 @@
 # Arquivo de configuração dos Widgets principais
 from kivy.uix.boxlayout import BoxLayout
 from paths import *
-from kivy.garden.graph import MeshLinePlot
+from kivy_garden.graph import MeshLinePlot
 
 # Classe que contém os widgets principais
 class MainLayout(BoxLayout):
     _imgDefaultAvatar = IMG_DEFAULT_AVATAR
     _imgConfigGear = IMG_CONFIG_GEAR
     _imgRegGlic = IMG_REG_GLIC
+    _imgCnnNews = IMG_CNN_NEWS
 
     # inicializando a classe
     def __init__(self, **kwargs):
