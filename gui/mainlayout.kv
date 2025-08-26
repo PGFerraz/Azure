@@ -156,22 +156,10 @@
                     spacing: dp(15)
 
                     # logo/icone principal
-                    MDIcon:
-                        icon: "medical-bag"
-                        size_hint: None, None
-                        size: dp(40), dp(40)
-                        theme_icon_color: "Custom"
-                        icon_color: 0.2, 0.7, 1, 1
-                        pos_hint: {"center_y": 0.5}
-
-                    # titulo principal
-                    MDLabel:
-                        text: "Azure"
-                        theme_text_color: "Custom"
-                        text_color: 1, 1, 1, 1
-                        font_size: "22sp"
-                        bold: True
-                        pos_hint: {"center_y": 0.5}
+                    Image:
+                        source: root._imgLogoAzure
+                        size_hint: 1.5, 1.5
+                        pos_hint: {"center_x": 0.5, "top": 0.95}
 
                     # spacer para empurrar icones para a direita
                     Widget:
