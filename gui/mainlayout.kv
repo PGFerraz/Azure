@@ -218,7 +218,7 @@
                                 radius: [15, 15, 15, 15]
                                 md_bg_color: 0.18, 0.45, 0.55, 1
                                 elevation: 3
-                                on_release: print("Tutoriais selecionado")
+                                on_release: app.open_link("https://diabetesdm1.netlify.app/tutoriais")
 
                                 MDBoxLayout:
                                     orientation: "vertical"
@@ -259,7 +259,7 @@
                                 radius: [15, 15, 15, 15]
                                 md_bg_color: 0.18, 0.45, 0.55, 1
                                 elevation: 3
-                                on_release: print("Quiz selecionado")
+                                on_release: app.open_link("https://diabetesdm1.netlify.app/quiz")
 
                                 MDBoxLayout:
                                     orientation: "vertical"
@@ -304,7 +304,7 @@
                                 radius: [15, 15, 15, 15]
                                 md_bg_color: 0.18, 0.45, 0.55, 1
                                 elevation: 3
-                                on_release: print("Download de aplicativos")
+                                on_release: app.open_link("https://diabetesdm1.netlify.app/downloads")
 
                                 MDBoxLayout:
                                     orientation: "vertical"
@@ -342,7 +342,7 @@
                                 radius: [15, 15, 15, 15]
                                 md_bg_color: 0.18, 0.45, 0.55, 1
                                 elevation: 3
-                                on_release: print("Ferramentas selecionadas")
+                                on_release: app.open_link("https://diabetesdm1.netlify.app/ferramentas")
 
                                 MDBoxLayout:
                                     orientation: "vertical"
@@ -380,7 +380,7 @@
                                 radius: [15, 15, 15, 15]
                                 md_bg_color: 0.18, 0.45, 0.55, 1
                                 elevation: 3
-                                on_release: print("Materiais e conteudos")
+                                on_release: app.open_link("https://diabetesdm1.netlify.app/conteudos-uteis-categorias")
 
                                 MDBoxLayout:
                                     orientation: "vertical"
@@ -419,7 +419,7 @@
                                 radius: [15, 15, 15, 15]
                                 md_bg_color: 0.18, 0.45, 0.55, 1
                                 elevation: 3
-                                on_release: print("FAQ selecionado")
+                                on_release: app.open_link("https://diabetesdm1.netlify.app/faq")
 
                                 MDBoxLayout:
                                     orientation: "vertical"
@@ -475,7 +475,7 @@
                                 radius: [15, 15, 15, 15]
                                 md_bg_color: 0.3, 0.3, 0.4, 1
                                 elevation: 2
-                                on_release: print("Video 1 selecionado")
+                                on_release: app.open_link("https://www.youtube.com/watch?v=Nfdb50MzUtI&ab_channel=DOUTORAJUDA")
 
                                 MDBoxLayout:
                                     orientation: "horizontal"
@@ -488,6 +488,7 @@
                                         size: dp(60), dp(50)
                                         radius: [10, 10, 10, 10]
                                         md_bg_color: 0.6, 0.4, 0.2, 1
+                                        on_release: app.open_link("https://www.youtube.com/watch?v=Nfdb50MzUtI&ab_channel=DOUTORAJUDA")
 
                                         MDIcon:
                                             icon: "play-circle"
@@ -526,7 +527,7 @@
                                 radius: [15, 15, 15, 15]
                                 md_bg_color: 0.5, 0.2, 0.4, 1
                                 elevation: 2
-                                on_release: print("Video 2 selecionado")
+                                on_release: app.open_link("https://www.youtube.com/watch?v=9cJl4WU9daY&ab_channel=DrJulianoTeles")
 
                                 MDBoxLayout:
                                     orientation: "horizontal"
@@ -539,6 +540,7 @@
                                         size: dp(60), dp(50)
                                         radius: [10, 10, 10, 10]
                                         md_bg_color: 0.7, 0.3, 0.5, 1
+                                        on_release: app.open_link("https://www.youtube.com/watch?v=9cJl4WU9daY&ab_channel=DrJulianoTeles")
 
                                         MDIcon:
                                             icon: "play-circle"
@@ -554,7 +556,7 @@
                                         spacing: dp(3)
 
                                         MDLabel:
-                                            text: "O que é diabetes? E como controlar"
+                                            text: "Como controlar o DIABETES"
                                             theme_text_color: "Custom"
                                             text_color: 1, 1, 1, 1
                                             font_size: "14sp"
@@ -563,7 +565,7 @@
                                             height: self.texture_size[1]
 
                                         MDLabel:
-                                            text: "Entenda mais sobre diabetes"
+                                            text: "Aprenda mais sobre diabetes"
                                             theme_text_color: "Custom"
                                             text_color: 0.7, 0.7, 0.7, 1
                                             font_size: "12sp"
