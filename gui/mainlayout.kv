@@ -6,6 +6,138 @@
     # Gerenciador de Telas/Menus
     MDScreenManager:
         id: screen_manager
+        # Add this before your other MDScreens inside MDScreenManager
+
+        MDScreen:
+            name: "screen_login"
+
+            #Layout Principal
+            MDFloatLayout:
+                md_bg_color: 0.122, 0.122, 0.145
+
+                # Linha Azul em cima da barra de navegação
+                Widget:
+                    size_hint: None, None
+                    size: root.width, dp(6)
+                    pos: 0, 0
+                    canvas:
+                        Color:
+                            rgba: 0.247,0.576,0.604,1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                
+                # Imagem da Logo
+                Image:
+                    source: root._imgLogoAzure
+                    size_hint: 0.55, 0.35
+                    pos_hint: {"center_x": 0.5, "top": 0.95}
+
+                # Caixa de texto - Nome de Usuário
+                MDTextField:
+                    id: username
+                    mode: "filled"
+                    size_hint_x: 0.7
+                    pos_hint: {"center_x": 0.5, "top": 0.62}
+
+                    MDTextFieldLeadingIcon:
+                        icon: "account-edit"
+
+                    MDTextFieldHintText:
+                        text: "Inserir Nome de Usuário"
+                        text_color_normal: "white"
+
+                    MDTextFieldHelperText:
+                        text: "max 10 caracteres"
+                        mode: "persistent"
+
+                    MDTextFieldMaxLengthText:
+                        max_text_length: 10
+
+                # Caixa de texto - Senha
+                MDTextField:
+                    id: password
+                    mode: "filled"
+                    size_hint_x: 0.7
+                    pos_hint: {"center_x": 0.5, "top": 0.47}
+                    password: True
+
+                    MDTextFieldLeadingIcon:
+                        icon: "key"
+
+                    MDTextFieldHintText:
+                        text: "Inserir Senha"
+                        text_color_normal: "white"
+
+                    MDTextFieldHelperText:
+                        text: "min 8 caracteres, letras e números"
+                        mode: "persistent"
+
+                    MDTextFieldMaxLengthText:
+                        max_text_length: 10
+                
+                # Checkbox
+                MDCheckbox:
+                    size_hint: None, None
+                    size: "48dp", "48dp"
+                    pos_hint: {"center_x": 0.2, "top": 0.33}
+                    on_active: root.show_password(*args)
+                
+                # Texto "Mostrar/Ocultar" Senha
+                MDLabel:
+                    id: password_text
+                    text: "Mostrar Senha"
+                    pos_hint: {"center_x": 0.4, "top": 0.336}
+                    size_hint: 0.3, 0.05
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+
+                # Login Status
+                MDLabel:
+                    id: login_status
+                    text: ""
+                    pos_hint: {"center_x": 0.58, "top": 0.68}
+                    size_hint: 0.80, 0.05
+                    theme_text_color: "Custom"
+                    text_color: 0.247,0.576,0.604,1
+                    font_size: "12sp"
+
+
+                # Botão "Cadastrar"
+                MDButton:
+                    style: "filled"
+                    pos_hint: {"center_x": 0.5, "top": 0.25}
+                    size_hint: None, None
+                    size: "386dp", "50dp"
+
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.247,0.576,0.604,1
+                    on_release: root.user_registration()
+                    MDButtonText:
+                        text: "Cadastrar"
+                        font_style: "Title"
+                        theme_font_size: "Custom"
+                        font_size: "16sp" 
+                        theme_text_color: "Custom"
+                        text_color: "white"
+                
+                # Botão "Log-In"
+                MDButton:
+                    style: "filled"
+                    pos_hint: {"center_x": 0.5, "top": 0.15}
+                    size_hint: None, None
+                    size: "386dp", "50dp"
+
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.247,0.576,0.604,1
+                    on_release: root.user_login()
+                    MDButtonText:
+                        text: "Log-In"
+                        font_style: "Title"
+                        theme_font_size: "Custom"
+                        font_size: "16sp" 
+                        theme_text_color: "Custom"
+                        text_color: "white"
 
         # Tela de Guias
         MDScreen:
@@ -465,7 +597,7 @@
                     pos: 0, 0
                     canvas:
                         Color:
-                            rgba: 0, 0.6, 1, 1
+                            rgba: 0.247,0.576,0.604,1
                         Rectangle:
                             pos: self.pos
                             size: self.size
@@ -497,6 +629,7 @@
                     height: "60dp"
                     size_hint_x: .4
                     pos_hint: {'center_x':0.26, 'top':0.75}
+                    on_release: screen_manager.current = "screen_reg_profile"
 
                     MDButtonIcon:
                         icon: "account"
@@ -581,7 +714,7 @@
                     pos: 0, 0
                     canvas:
                         Color:
-                            rgba: 0, 0.6, 1, 1
+                            rgba: 0.247,0.576,0.604,1
                         Rectangle:
                             pos: self.pos
                             size: self.size
@@ -594,7 +727,7 @@
                     
                     canvas:
                         Color:
-                            rgba: 0, 0.6, 1, 1
+                            rgba: 0.247,0.576,0.604,1
                         Line:
                             points: [self.parent.width*0.25, self.y, self.parent.width*1.01, self.y]
                             width: 1
@@ -607,13 +740,14 @@
                     
                     canvas:
                         Color:
-                            rgba: 0, 0.6, 1, 1
+                            rgba: 0.247,0.576,0.604,1
                         Line:
                             points: [self.parent.width*0.29, self.y, self.parent.width*1.01, self.y]
                             width: 1
 
                 # Nome de Usuário
                 MDLabel:
+                    id: profile_username
                     text: "Username"
                     size_hint: 0.18, 0.13
                     pos_hint: {"center_x": 0.35, "top": 0.96}
@@ -713,18 +847,29 @@
                     size_hint: None, None
                     size: "286dp", "40dp"
 
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.247,0.576,0.604,1
+
                     MDButtonIcon:
                         icon: "plus"
+                        theme_icon_color: "Custom"
+                        icon_color: "white"
+
 
                     MDButtonText:
                         text: "Registrar Glicemia"
                         font_style: "Title"
                         theme_font_size: "Custom"
-                        font_size: "14sp" 
+                        font_size: "14sp"
+                        theme_text_color: "Custom"
+                        text_color: "white"
 
-    # Barra de Navegação Inferior
     MDNavigationBar:
         id: nav_bar
+        opacity: 0 if screen_manager.current == "screen_login" else 1
+        disabled: True if screen_manager.current == "screen_login" else False
+        md_bg_color: (0.122, 0.122, 0.145, 0) if screen_manager.current == "screen_login" else (0.122, 0.122, 0.145, 1)
+        height: 0 if screen_manager.current == "screen_login" else dp(56)
 
         MDNavigationItem:
             name: "screen_guides"
@@ -749,5 +894,4 @@
             on_release: screen_manager.current = "screen_profile"
 
             MDNavigationItemIcon:
-
                 icon: "account"
