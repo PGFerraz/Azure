@@ -1,5 +1,6 @@
 # Importando Módulos
 import os
+import webbrowser
 from kivy.config import Config
 Config.set('graphics', 'width', '422')
 Config.set('graphics', 'height', '844')
@@ -14,6 +15,10 @@ class MainApp(MDApp):
         Builder.load_file(os.path.join(os.path.dirname(__file__), "gui", "mainlayout.kv"))
         self.theme_cls.theme_style = "Dark"
         return MainLayout()
+
+    def open_link(self, url):
+        """Abre um link no navegador padrão"""
+        webbrowser.open(url)
 
 # Criando e executando o objeto da classe MainApp
 MainApp().run()
