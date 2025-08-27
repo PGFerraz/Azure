@@ -10,10 +10,18 @@ from gui.widgets import MainLayout
 # Classe MDApp principal
 class MainApp(MDApp):
     def build(self):
-        # carrega o arquivo KV antes de retornar o layout
         Builder.load_file(os.path.join(os.path.dirname(__file__), "gui", "mainlayout.kv"))
         self.theme_cls.theme_style = "Dark"
-        return MainLayout()
+        layout = MainLayout()
 
-# Criando e executando o objeto da classe MainApp
+        # Verifica se há usuário salvo
+        last_user = layout.get_logged_in_user()
+        if last_user:
+            layout.login_state(last_user)
+            layout.update_daily_graph(last_user)
+            layout.update_monthly_graph(last_user)
+            layout.ids.screen_manager.current = "screen_home"
+
+        return layout
+
 MainApp().run()

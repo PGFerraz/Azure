@@ -345,12 +345,13 @@
                     size_hint: 0.18, 0.13
                     pos_hint: {"center_x": 0.14, "top": 0.96}
 
-                # Botão de configurações
+                # Botão de Log-Out
                 MDIconButton:
-                    icon: "cog"
+                    icon: "account-remove"
                     pos_hint: {"center_x": 0.86, "top": 0.93}
                     theme_icon_color: "Custom"
                     icon_color: "white"
+                    on_release: root.logout_user()
 
                 # Botão de Notificações
                 MDIconButton:
@@ -414,6 +415,7 @@
 
                     theme_bg_color: "Custom"
                     md_bg_color: 0.247,0.576,0.604,1
+                    on_release: screen_manager.current = "screen_glycemia"
 
                     MDButtonIcon:
                         icon: "plus"
@@ -426,6 +428,75 @@
                         font_style: "Title"
                         theme_font_size: "Custom"
                         font_size: "14sp"
+                        theme_text_color: "Custom"
+                        text_color: "white"
+
+        MDScreen:
+            name: "screen_glycemia"
+
+            #Layout Principal
+            MDFloatLayout:
+                md_bg_color: 0.122, 0.122, 0.145
+
+                # Linha Azul em cima da barra de navegação
+                Widget:
+                    size_hint: None, None
+                    size: root.width, dp(6)
+                    pos: 0, 0
+                    canvas:
+                        Color:
+                            rgba: 0.247,0.576,0.604,1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+
+                # Caixa de texto - Nível de Glicemia
+                MDTextField:
+                    id: glycemia_input
+                    mode: "filled"
+                    size_hint_x: 0.7
+                    pos_hint: {"center_x": 0.5, "top": 0.62}
+
+                    MDTextFieldLeadingIcon:
+                        icon: "account-edit"
+
+                    MDTextFieldHintText:
+                        text: "Inserir Nível de Glicemia"
+                        text_color_normal: "white"
+
+                    MDTextFieldHelperText:
+                        text: "max 10 caracteres"
+                        mode: "persistent"
+
+                    MDTextFieldMaxLengthText:
+                        max_text_length: 10
+
+                # Login Status
+                MDLabel:
+                    id: login_status
+                    text: ""
+                    pos_hint: {"center_x": 0.58, "top": 0.68}
+                    size_hint: 0.80, 0.05
+                    theme_text_color: "Custom"
+                    text_color: 0.247,0.576,0.604,1
+                    font_size: "12sp"
+
+
+                # Botão "Registrar"
+                MDButton:
+                    style: "filled"
+                    pos_hint: {"center_x": 0.5, "top": 0.25}
+                    size_hint: None, None
+                    size: "386dp", "50dp"
+
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.247,0.576,0.604,1
+                    on_release: root.register_glycemia()
+                    MDButtonText:
+                        text: "Cadastrar"
+                        font_style: "Title"
+                        theme_font_size: "Custom"
+                        font_size: "16sp" 
                         theme_text_color: "Custom"
                         text_color: "white"
 
