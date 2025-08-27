@@ -1,0 +1,27 @@
+<ExpandableCard>:
+    orientation: "vertical"
+    padding: dp(10), dp(5), dp(10), dp(5)
+    size_hint_y: None
+    height: root.card_height
+    md_bg_color: 0.2, 0.2, 0.25, 1
+    radius: [10,]
+
+    MDLabel:
+        id: label_summary
+        text: root.text_summary
+        halign: "left"
+        halign: "center"            
+        text_size: self.width, None
+        theme_text_color: "Custom"
+        text_color: 1, 1, 1, 1
+
+    MDLabel:
+        id: label_detail
+        text: root.text_detail
+        halign: "left"
+        halign: "center"
+        text_size: self.width, None             
+        text_size: self.width, None
+        opacity: 0
+        theme_text_color: "Custom"
+        text_color: 1, 1, 1, 1
