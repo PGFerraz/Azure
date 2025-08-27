@@ -587,11 +587,28 @@
                     pos: 0, 0
                     canvas:
                         Color:
-                            rgba: 0.247,0.576,0.604,1
+                            rgba: 0, 0.6, 1, 1
                         Rectangle:
                             pos: self.pos
                             size: self.size
 
+                # Logo Azure
+                Image:
+                    source: root._imgAzure
+                    size_hint: 0.25, 0.15
+                    pos_hint: {"center_x": 0.15, "top": 0.98}
+                
+                # Botão de Notificações
+                MDIconButton:
+                    icon: "bell"
+                    style: "standard"
+                    size_hint: 0.15, 0.08
+                    pos_hint: {"center_x": 0.70, "top": 0.94}
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.122, 0.122, 0.145
+                    theme_icon_color: "Custom"
+                    icon_color: "white"
+                
                 MDLabel: 
                     text: "Primeiros Passos"
                     halign: "center"
@@ -615,18 +632,22 @@
                 # Botão de criar seu Perfil
                 MDButton:
                     style: "filled"
-                    theme_width: "Custom"
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.247, 0.576, 0.604
                     height: "60dp"
                     size_hint_x: .4
                     pos_hint: {'center_x':0.26, 'top':0.75}
-                    on_release: screen_manager.current = "screen_reg_profile"
 
                     MDButtonIcon:
                         icon: "account"
+                        theme_icon_color: "Custom"
+                        icon_color: 1, 1, 1, 1
 
                     MDButtonText:
                         text: "Criando o seu \nPerfil"
-                        the_font_size: "custom"
+                        theme_text_color: "Custom"
+                        text_color: 1, 1, 1, 1
+                        the_font_size: "Custom"
                         font_size: "8sp"
 
                 # Botão Atalho para os Guias
@@ -634,23 +655,29 @@
                     style: "filled"
                     theme_width: "Custom"
                     height: "60dp"
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.247, 0.576, 0.604
                     size_hint_x: .4
                     pos_hint: {'center_x':0.74, 'top':0.75}
 
                     MDButtonIcon:
                         x: text.x - (self.width + dp(8))
                         icon: "book"
+                        theme_icon_color: "Custom"
+                        icon_color: 1, 1, 1, 1
 
                     MDButtonText:
                         id: text
                         text: "Guias e \nTutoriais"
+                        theme_text_color: "Custom"
+                        text_color: 1, 1, 1, 1
                         pos_hint: {"center_x": .5, "center_y": .5}
                 
                 # Área de Notícias
                 MDLabel: 
                     text: "Fique por Dentro"
                     halign: "center"
-                    pos_hint: {'center_x':0.18, 'top':1.08}
+                    pos_hint: {'center_x':0.18, 'top':1.09}
                     theme_text_color: "Custom"
                     text_color: 1, 1, 1, 1
 
@@ -667,27 +694,19 @@
                             points: [self.parent.width*0.35, self.y, self.parent.width*1.01, self.y]  
                             width: 1
                 
-                # Botão de configurações
-                MDIconButton:
-                    icon: "cog"
-                    style: "standard"
-                    size_hint: 0.15, 0.08
-                    pos_hint: {"center_x": 0.86, "top": 0.94}
-                    theme_bg_color: "Custom"
-                    md_bg_color: 0.122, 0.122, 0.145
-                    theme_icon_color: "Custom"
-                    icon_color: "white"
-
-                # Botão de Notificações
-                MDIconButton:
-                    icon: "bell"
-                    style: "standard"
-                    size_hint: 0.15, 0.08
-                    pos_hint: {"center_x": 0.70, "top": 0.94}
-                    theme_bg_color: "Custom"
-                    md_bg_color: 0.122, 0.122, 0.145
-                    theme_icon_color: "Custom"
-                    icon_color: "white"
+                # Botão com a Notícia 1
+                Button:
+                    background_normal: root._imgCnnNews
+                    size_hint: None, None
+                    size: 320, 190
+                    pos_hint: {'center_x':0.49, 'top':0.55}
+                
+                # Botão com a Notícia 2
+                Button:
+                    background_normal: root._imgNoticia2
+                    size_hint: None, None
+                    size: 320, 190
+                    pos_hint: {'center_x':0.49, 'top':0.28}
 
         # Tela de Perfil
         MDScreen:
@@ -946,3 +965,4 @@
 
             MDNavigationItemIcon:
                 icon: "account"
+
