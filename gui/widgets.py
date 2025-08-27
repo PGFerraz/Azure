@@ -5,6 +5,9 @@ from paths import *
 from kivy.garden.graph import MeshLinePlot
 import json, datetime, webbrowser
 from kivy.garden.graph import SmoothLinePlot
+from kivy.animation import Animation
+from kivy.properties import BooleanProperty, StringProperty, NumericProperty
+from kivymd.uix.card import MDCard
 
 # Classe que contém os widgets principais
 class MainLayout(BoxLayout):
@@ -361,3 +364,29 @@ class MainLayout(BoxLayout):
             self.ids.login_status.text = "Nenhum usuário registrado. Por favor, registre-se primeiro."
         except json.JSONDecodeError:
             self.ids.login_status.text = "Erro ao ler dados do usuário. O arquivo pode estar corrompido."
+
+# Animação do card da screen_first_start
+class ExpandableCard(BoxLayout):
+    text_summary = StringProperty("Aviso Importante")
+    text_detail = StringProperty("Esse app é apenas um protótipo. Para dúvidas ou reclamações entre em contato conosco pelo email azure@gmail.com")
+    expanded = BooleanProperty(False)
+
+    card_height = NumericProperty("60dp")  # altura inicial do card
+
+    def on_touch_down(self, touch):
+        if self.collide_point(*touch.pos):
+            self.toggle()
+        return super().on_touch_down(touch)
+
+    def toggle(self):
+        self.expanded = not self.expanded
+        if self.expanded:
+            anim = Animation(card_height=self.minimum_height + 80, duration=0.3)
+            anim.start(self)
+            self.ids.label_detail.opacity = 1
+            self.ids.label_summary.opacity = 0
+        else:
+            anim = Animation(card_height=60, duration=0.3)
+            anim.start(self)
+            self.ids.label_detail.opacity = 0
+            self.ids.label_summary.opacity = 1
