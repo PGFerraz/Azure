@@ -3,8 +3,7 @@ from user import User
 from kivy.uix.boxlayout import BoxLayout
 from paths import *
 from kivy.garden.graph import MeshLinePlot
-import json
-import datetime
+import json, datetime, webbrowser
 from kivy.garden.graph import SmoothLinePlot
 
 # Classe que contém os widgets principais
@@ -48,6 +47,11 @@ class MainLayout(BoxLayout):
         # Customiza os labels do eixo X e Y do gráfico diário
         graph_day.x_labels = ['06:00', '12:00', '18:00', '00:00']
         graph_day.y_labels = ['0', '70', '180', '300']
+
+    # Função para abrir links externos
+    def open_link(self, url):
+        """Abre um link no navegador padrão"""
+        webbrowser.open(url)
 
     def show_password(self, checkbox, value):
         if value:
