@@ -30,12 +30,12 @@ class User:
         os.makedirs(self.ud_main_folder_path(self.name), exist_ok=True)
         with open(self.ud_main_user_json(self.name), 'a') as f:
             json.dump(User.user_list, f, indent=4)
-        with open(self.ud_json_path, 'w') as f:
+        with open(self.ud_json_path, 'a') as f:
             json.dump(User.user_list, f, indent=4)
 
     def registrationGUI(self, username, password):
         if not username or not password:
-            return False # Não faz nada se username ou password forem vazios
+            return False
 
         self.name = username
         self.password = password
