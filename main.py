@@ -6,10 +6,12 @@ Config.set('graphics', 'height', '844')
 from kivy.lang import Builder
 from kivymd.app import MDApp
 from gui.widgets import MainLayout
+from gui.widgets import ExpandableCard
   
 # Classe MDApp principal
 class MainApp(MDApp):
     def build(self):
+        Builder.load_file(os.path.join(os.path.dirname(__file__), "gui", "expandablecard.kv"))
         Builder.load_file(os.path.join(os.path.dirname(__file__), "gui", "mainlayout.kv"))
         self.theme_cls.theme_style = "Dark"
         layout = MainLayout()
@@ -25,4 +27,5 @@ class MainApp(MDApp):
         return layout
       
 # Criando e executando o objeto da classe MainApp
+
 MainApp().run()
