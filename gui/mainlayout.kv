@@ -713,7 +713,7 @@
                 Widget:
                     size_hint: None, None
                     size: self.parent.width, dp(2)
-                    pos: 0, self.parent.height - dp(147)
+                    pos: 0, self.parent.height - dp(150)
                     
                     canvas:
                         Color:
@@ -726,7 +726,7 @@
                 Widget:
                     size_hint: None, None
                     size: self.parent.width, dp(2)
-                    pos: 0, self.parent.height - dp(412)
+                    pos: 0, self.parent.height - dp(425)
                     
                     canvas:
                         Color:
@@ -882,19 +882,9 @@
                     size_hint_x: 0.7
                     pos_hint: {"center_x": 0.5, "top": 0.62}
 
-                    MDTextFieldLeadingIcon:
-                        icon: "account-edit"
-
                     MDTextFieldHintText:
                         text: "Inserir Nível de Glicemia"
                         text_color_normal: "white"
-
-                    MDTextFieldHelperText:
-                        text: "max 10 caracteres"
-                        mode: "persistent"
-
-                    MDTextFieldMaxLengthText:
-                        max_text_length: 10
 
                 # Login Status
                 MDLabel:
@@ -918,7 +908,7 @@
                     md_bg_color: 0.247,0.576,0.604,1
                     on_release: root.register_glycemia()
                     MDButtonText:
-                        text: "Cadastrar"
+                        text: "Registrar"
                         font_style: "Title"
                         theme_font_size: "Custom"
                         font_size: "16sp" 
