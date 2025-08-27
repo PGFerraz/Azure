@@ -143,9 +143,434 @@
         MDScreen:
             name: "screen_guides"
 
-            MDLabel:
-                text: "Guias e tutoriais"
-                halign: "center"
+            MDFloatLayout:
+                md_bg_color: 0.122, 0.122, 0.145, 1
+
+                # header com titulo e icones
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    size_hint: 1, None
+                    height: dp(80)
+                    pos_hint: {"top": 1}
+                    padding: dp(20)
+                    spacing: dp(15)
+
+                    # logo/icone principal
+                    Image:
+                        source: root._imgLogoAzure
+                        size_hint: 1.5, 1.5
+                        pos_hint: {"center_x": 0.5, "top": 0.95}
+
+                    # spacer para empurrar icones para a direita
+                    Widget:
+
+                    # botao de notif.
+                    MDIconButton:
+                        icon: "bell"
+                        size_hint: None, None
+                        size: dp(40), dp(40)
+                        theme_icon_color: "Custom"
+                        icon_color: "white"
+                        pos_hint: {"center_y": 0.5}
+
+                    # botão de config.
+                    MDIconButton:
+                        icon: "cog"
+                        size_hint: None, None
+                        size: dp(40), dp(40)
+                        theme_icon_color: "Custom"
+                        icon_color: "white"
+                        pos_hint: {"center_y": 0.5}
+
+                # scrollview para o conteudo da page
+                MDScrollView:
+                    pos_hint: {"top": 0.88}
+                    size_hint: 1, 0.88
+
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        spacing: dp(20)
+                        padding: dp(20)
+                        adaptive_height: True
+
+                        # seção Recursos de Apoio - titulo
+                        MDLabel:
+                            text: "Recursos de Apoio"
+                            theme_text_color: "Custom"
+                            text_color: 1, 1, 1, 1
+                            font_size: "18sp"
+                            bold: True
+                            size_hint_y: None
+                            height: self.texture_size[1]
+                            padding: [0, dp(15), 0, dp(5)]
+
+                        # grid de cards principais (2 colunas)
+                        MDGridLayout:
+                            cols: 2
+                            spacing: dp(15)
+                            adaptive_height: True
+                            size_hint_y: None
+
+                            # card 1 - Tutoriais e Aprendizado
+                            MDCard:
+                                size_hint_y: None
+                                height: dp(120)
+                                radius: [15, 15, 15, 15]
+                                md_bg_color: 0.18, 0.45, 0.55, 1
+                                elevation: 3
+                                on_release: app.open_link("https://diabetesdm1.netlify.app/tutoriais")
+
+                                MDBoxLayout:
+                                    orientation: "vertical"
+                                    padding: dp(15)
+                                    spacing: dp(1)
+                                    size_hint_y: None
+                                    height: dp(28)
+
+                                    MDIcon:
+                                        icon: "book-open-page-variant"
+                                        size_hint: None, None
+                                        size: dp(28), dp(28)
+                                        theme_icon_color: "Custom"
+                                        icon_color: 1, 1, 1, 1
+                                        halign: "left"
+
+                                    MDLabel:
+                                        text: "Tutoriais"
+                                        theme_text_color: "Custom"
+                                        text_color: 1, 1, 1, 1
+                                        font_size: "14sp"
+                                        bold: True
+                                        size_hint_y: None
+                                        height: self.texture_size[1]
+
+                                    MDLabel:
+                                        text: "Aprendizado e Documentos"
+                                        theme_text_color: "Custom"
+                                        text_color: 0.9, 0.9, 0.9, 1
+                                        font_size: "11sp"
+                                        size_hint_y: None
+                                        height: self.texture_size[1]
+
+                            # card 2 - Quiz e testes
+                            MDCard:
+                                size_hint_y: None
+                                height: dp(120)
+                                radius: [15, 15, 15, 15]
+                                md_bg_color: 0.18, 0.45, 0.55, 1
+                                elevation: 3
+                                on_release: app.open_link("https://diabetesdm1.netlify.app/quiz")
+
+                                MDBoxLayout:
+                                    orientation: "vertical"
+                                    padding: dp(15)
+                                    spacing: dp(1)
+
+                                    MDIcon:
+                                        icon: "head-question"
+                                        size_hint: None, None
+                                        size: dp(28), dp(28)
+                                        theme_icon_color: "Custom"
+                                        icon_color: 1, 1, 1, 1
+
+                                    MDLabel:
+                                        text: "Quiz"
+                                        theme_text_color: "Custom"
+                                        text_color: 1, 1, 1, 1
+                                        font_size: "14sp"
+                                        bold: True
+                                        size_hint_y: None
+                                        height: self.texture_size[1]
+
+                                    MDLabel:
+                                        text: "teste seus conhecimentos"
+                                        theme_text_color: "Custom"
+                                        text_color: 0.9, 0.9, 0.9, 1
+                                        font_size: "11sp"
+                                        size_hint_y: None
+                                        height: self.texture_size[1]
+
+                        # cards inferiores em grid 2x2
+                        MDGridLayout:
+                            cols: 2
+                            spacing: dp(15)
+                            adaptive_height: True
+                            size_hint_y: None
+
+                            # card 3 - Downloads de Aplicativos
+                            MDCard:
+                                size_hint_y: None
+                                height: dp(120)
+                                radius: [15, 15, 15, 15]
+                                md_bg_color: 0.18, 0.45, 0.55, 1
+                                elevation: 3
+                                on_release: app.open_link("https://diabetesdm1.netlify.app/downloads")
+
+                                MDBoxLayout:
+                                    orientation: "vertical"
+                                    padding: [dp(15), dp(25), dp(10), dp(25)] # mini observação>: [left, top, right, bottom]
+                                    spacing: dp(1)
+
+                                    MDIcon:
+                                        icon: "download"
+                                        size_hint: None, None
+                                        size: dp(28), dp(28)
+                                        theme_icon_color: "Custom"
+                                        icon_color: 1, 1, 1, 1
+
+                                    MDLabel:
+                                        text: "Downloads"
+                                        theme_text_color: "Custom"
+                                        text_color: 1, 1, 1, 1
+                                        font_size: "14sp"
+                                        bold: True
+                                        size_hint_y: None
+                                        height: self.texture_size[1]
+
+                                    MDLabel:
+                                        text: "de aplicativos"
+                                        theme_text_color: "Custom"
+                                        text_color: 0.9, 0.9, 0.9, 1
+                                        font_size: "11sp"
+                                        size_hint_y: None
+                                        height: self.texture_size[1]
+
+                            # card 4 - Ferramentas Uteis
+                            MDCard:
+                                size_hint_y: None
+                                height: dp(120)
+                                radius: [15, 15, 15, 15]
+                                md_bg_color: 0.18, 0.45, 0.55, 1
+                                elevation: 3
+                                on_release: app.open_link("https://diabetesdm1.netlify.app/ferramentas")
+
+                                MDBoxLayout:
+                                    orientation: "vertical"
+                                    padding: [dp(15), dp(3), dp(10), dp(3)] # mini observação>: [left, top, right, bottom]
+                                    spacing: dp(1)
+
+                                    MDIcon:
+                                        icon: "cog"
+                                        size_hint: None, None
+                                        size: dp(25), dp(25)
+                                        theme_icon_color: "Custom"
+                                        icon_color: 1, 1, 1, 1
+
+                                    MDLabel:
+                                        text: "Ferramentas Úteis"
+                                        theme_text_color: "Custom"
+                                        text_color: 1, 1, 1, 1
+                                        font_size: "14sp"
+                                        bold: True
+                                        size_hint_y: None
+                                        height: self.texture_size[1]
+
+                                    MDLabel:
+                                        text: "Tudo o que você precisa"
+                                        theme_text_color: "Custom"
+                                        text_color: 0.9, 0.9, 0.9, 1
+                                        font_size: "11sp"
+                                        size_hint_y: None
+                                        height: self.texture_size[1]
+
+                            # Card 5 - Materiais e Conjteudos
+                            MDCard:
+                                size_hint_y: None
+                                height: dp(120)
+                                radius: [15, 15, 15, 15]
+                                md_bg_color: 0.18, 0.45, 0.55, 1
+                                elevation: 3
+                                on_release: app.open_link("https://diabetesdm1.netlify.app/conteudos-uteis-categorias")
+
+                                MDBoxLayout:
+                                    orientation: "vertical"
+                                    padding: [dp(15), dp(15), dp(10), dp(15)] # mini observação>: [left, top, right, bottom]
+                                    spacing: dp(1)
+
+
+                                    MDIcon:
+                                        icon: "file-document"
+                                        size_hint: None, None
+                                        size: dp(28), dp(28)
+                                        theme_icon_color: "Custom"
+                                        icon_color: 1, 1, 1, 1
+
+                                    MDLabel:
+                                        text: "Materiais e Conteúdos"
+                                        theme_text_color: "Custom"
+                                        text_color: 1, 1, 1, 1
+                                        font_size: "14sp"
+                                        bold: True
+                                        size_hint_y: None
+                                        height: self.texture_size[1]
+
+                                    MDLabel:
+                                        text: "de apoio"
+                                        theme_text_color: "Custom"
+                                        text_color: 0.9, 0.9, 0.9, 1
+                                        font_size: "11sp"
+                                        size_hint_y: None
+                                        height: self.texture_size[1]
+
+                            # card 6 - FAQ - Perguntas e Respostas
+                            MDCard:
+                                size_hint_y: None
+                                height: dp(120)
+                                radius: [15, 15, 15, 15]
+                                md_bg_color: 0.18, 0.45, 0.55, 1
+                                elevation: 3
+                                on_release: app.open_link("https://diabetesdm1.netlify.app/faq")
+
+                                MDBoxLayout:
+                                    orientation: "vertical"
+                                    padding: dp(15)
+                                    spacing: dp(12)
+
+                                    MDIcon:
+                                        icon: "help-circle"
+                                        size_hint: None, None
+                                        size: dp(28), dp(28)
+                                        theme_icon_color: "Custom"
+                                        icon_color: 1, 1, 1, 1
+
+                                    MDLabel:
+                                        text: "FAQ"
+                                        theme_text_color: "Custom"
+                                        text_color: 1, 1, 1, 1
+                                        font_size: "14sp"
+                                        bold: True
+                                        size_hint_y: 12
+                                        height: self.texture_size[1]
+
+                                    MDLabel:
+                                        text: "Perguntas e Respostas"
+                                        theme_text_color: "Custom"
+                                        text_color: 0.9, 0.9, 0.9, 1
+                                        font_size: "11sp"
+                                        size_hint_y: None
+                                        height: self.texture_size[1]
+
+                        # seção de videos - titulo
+                        MDLabel:
+                            text: "Videos"
+                            theme_text_color: "Custom"
+                            text_color: 1, 1, 1, 1
+                            font_size: "18sp"
+                            bold: True
+                            size_hint_y: None
+                            height: self.texture_size[1]
+                            padding: [0, dp(15), 0, dp(5)]
+
+                        # cards de videos horizontais
+                        MDBoxLayout:
+                            orientation: "vertical"
+                            spacing: dp(10)
+                            adaptive_height: True
+                            size_hint_y: None
+
+                            # video 1 - Diferenças entre diabetes tipo 1 e 2
+                            MDCard:
+                                size_hint_y: None
+                                height: dp(80)
+                                radius: [15, 15, 15, 15]
+                                md_bg_color: 0.3, 0.3, 0.4, 1
+                                elevation: 2
+                                on_release: app.open_link("https://www.youtube.com/watch?v=Nfdb50MzUtI&ab_channel=DOUTORAJUDA")
+
+                                MDBoxLayout:
+                                    orientation: "horizontal"
+                                    padding: dp(15)
+                                    spacing: dp(15)
+
+                                    # Thumbnail do video
+                                    MDCard:
+                                        size_hint: None, None
+                                        size: dp(60), dp(50)
+                                        radius: [10, 10, 10, 10]
+                                        md_bg_color: 0.6, 0.4, 0.2, 1
+                                        on_release: app.open_link("https://www.youtube.com/watch?v=Nfdb50MzUtI&ab_channel=DOUTORAJUDA")
+
+                                        MDIcon:
+                                            icon: "play-circle"
+                                            size_hint: None, None
+                                            size: dp(30), dp(30)
+                                            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                                            theme_icon_color: "Custom"
+                                            icon_color: 1, 1, 1, 0.8
+
+                                    # Informaçoes do video
+                                    MDBoxLayout:
+                                        orientation: "vertical"
+                                        spacing: dp(3)
+
+                                        MDLabel:
+                                            text: "Diferenças entre diabetes tipo 1 e 2"
+                                            theme_text_color: "Custom"
+                                            text_color: 1, 1, 1, 1
+                                            font_size: "14sp"
+                                            bold: True
+                                            size_hint_y: None
+                                            height: self.texture_size[1]
+
+                                        MDLabel:
+                                            text: "Entenda as principais diferenças"
+                                            theme_text_color: "Custom"
+                                            text_color: 0.7, 0.7, 0.7, 1
+                                            font_size: "12sp"
+                                            size_hint_y: None
+                                            height: self.texture_size[1]
+
+                            # video 2 - O que é diabetes
+                            MDCard:
+                                size_hint_y: None
+                                height: dp(80)
+                                radius: [15, 15, 15, 15]
+                                md_bg_color: 0.5, 0.2, 0.4, 1
+                                elevation: 2
+                                on_release: app.open_link("https://www.youtube.com/watch?v=9cJl4WU9daY&ab_channel=DrJulianoTeles")
+
+                                MDBoxLayout:
+                                    orientation: "horizontal"
+                                    padding: dp(15)
+                                    spacing: dp(15)
+
+                                    # Thumbnail do video
+                                    MDCard:
+                                        size_hint: None, None
+                                        size: dp(60), dp(50)
+                                        radius: [10, 10, 10, 10]
+                                        md_bg_color: 0.7, 0.3, 0.5, 1
+                                        on_release: app.open_link("https://www.youtube.com/watch?v=9cJl4WU9daY&ab_channel=DrJulianoTeles")
+
+                                        MDIcon:
+                                            icon: "play-circle"
+                                            size_hint: None, None
+                                            size: dp(30), dp(30)
+                                            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                                            theme_icon_color: "Custom"
+                                            icon_color: 1, 1, 1, 0.8
+
+                                    # Informações do video
+                                    MDBoxLayout:
+                                        orientation: "vertical"
+                                        spacing: dp(3)
+
+                                        MDLabel:
+                                            text: "Como controlar o DIABETES"
+                                            theme_text_color: "Custom"
+                                            text_color: 1, 1, 1, 1
+                                            font_size: "14sp"
+                                            bold: True
+                                            size_hint_y: None
+                                            height: self.texture_size[1]
+
+                                        MDLabel:
+                                            text: "Aprenda mais sobre diabetes"
+                                            theme_text_color: "Custom"
+                                            text_color: 0.7, 0.7, 0.7, 1
+                                            font_size: "12sp"
+                                            size_hint_y: None
+                                            height: self.texture_size[1]
 
         # Tela Principal/Home
         MDScreen:
