@@ -6,7 +6,46 @@
     # Gerenciador de Telas/Menus
     MDScreenManager:
         id: screen_manager
-        # Add this before your other MDScreens inside MDScreenManager
+        
+        MDScreen:
+            name: "screen_first_start"
+
+            MDFloatLayout:
+                md_bg_color: 0.122, 0.122, 0.145, 1
+                
+                Image:
+                    source: root._imgAzure
+                    size_hint: 0.35, 0.25
+                    pos_hint: {"center_x": 0.55, "top": 0.98}
+                
+                MDLabel:
+                    text: "Seja Bem Vindo(a)!"
+                    halign: "center"
+
+            ScrollView:
+                MDList:
+                    id: container
+                    padding: dp(0), dp(550)
+                    
+                    ExpandableCard:
+                        text_summary: "Aviso importante!"
+                        text_detail: "Esse app é apenas um protótipo. Para dúvidas ou reclamações entre em contato conosco pelo email azure@gmail.com"
+            MDButton:
+                style: "filled"
+                theme_width: "Custom"
+                height: "60dp"
+                theme_bg_color: "Custom"
+                md_bg_color: 0.247, 0.576, 0.604
+                size_hint_x: .4
+                pos_hint: {'center_x':0.74, 'top':0.15}
+
+                MDButtonText:
+                    id: text
+                    text: "Continuar"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    pos_hint: {"center_x": .5, "center_y": .5}
+                    on_release: app.root.ids.screen_manager.current = "screen_login"
 
         MDScreen:
             name: "screen_login"
