@@ -2,9 +2,9 @@
 from user import User
 from kivy.uix.boxlayout import BoxLayout
 from paths import *
-from kivy_garden.graph import MeshLinePlot
+from kivy.garden.graph import MeshLinePlot
 import json, datetime, webbrowser
-from kivy_garden.graph import SmoothLinePlot
+from kivy.garden.graph import SmoothLinePlot
 
 # Classe que contém os widgets principais
 class MainLayout(BoxLayout):
@@ -98,7 +98,7 @@ class MainLayout(BoxLayout):
         # Volta para tela de login/registro
         self.ids.screen_manager.current = 'screen_login'
 
-    # Atualiza os gráficos com os dados do usuário
+     # Atualiza os gráficos com os dados do usuário
     def load_glicemia_records(self, username):
         user_json_path = User.ud_main_user_json(username)
         try:
@@ -155,19 +155,16 @@ class MainLayout(BoxLayout):
         user_glycemia = self.load_glicemia_records(username)
         graph_day = self.ids.profile_graph_day
 
-        # limpa plots anteriores
         while graph_day.plots:
             graph_day.remove_plot(graph_day.plots[0])
 
-        # linha principal
-        plot_day = MeshLinePlot(color=[0, 0.6, 1, 1])
-        plot_day.line_width = 2
-
-        now = datetime.datetime.now()
-        day_id = now.strftime("%Y-%m-%d")
+        # pega último dia com registros
+        if not user_glycemia:
+            return
+        last_day = sorted(user_glycemia.keys())[-1]
         day_points = []
 
-        for entry in user_glycemia.get(day_id, []):
+        for entry in user_glycemia[last_day]:
             try:
                 hour = int(entry['time'].split(':')[0])
                 minute = int(entry['time'].split(':')[1])
@@ -178,18 +175,16 @@ class MainLayout(BoxLayout):
                 continue
 
         if day_points:
-            # adiciona a linha principal
+            plot_day = MeshLinePlot(color=[0, 0.6, 1, 1])
             plot_day.points = day_points
             graph_day.add_plot(plot_day)
 
-            # adiciona bolinhas em cada ponto
             for x, y in day_points:
                 dot = MeshLinePlot(color=[1, 0.3, 0, 1])
-                dot.points = [(x, y), (x, y + 5)]
-                dot.line_width = 18
+                dot.points = [(x, y), (x+0.1, y+0.1)]
+                dot.line_width = 8
                 graph_day.add_plot(dot)
 
-        # configura eixos
         graph_day.xmin = 0
         graph_day.xmax = 24
         graph_day.ymin = 0

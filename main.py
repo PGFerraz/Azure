@@ -1,8 +1,8 @@
 # Importando Módulos
 import os
-#from kivy.config import Config
-#Config.set('graphics', 'width', '422')
-#Config.set('graphics', 'height', '844')
+from kivy.config import Config
+Config.set('graphics', 'width', '422')
+Config.set('graphics', 'height', '844')
 from kivy.lang import Builder
 from kivymd.app import MDApp
 from gui.widgets import MainLayout
