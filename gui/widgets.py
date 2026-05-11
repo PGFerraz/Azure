@@ -2,9 +2,9 @@
 from user import User
 from kivy.uix.boxlayout import BoxLayout
 from paths import *
-from kivy.garden.graph import MeshLinePlot
+from kivy_garden.graph import Graph, MeshLinePlot
 import json, datetime, webbrowser
-from kivy.garden.graph import SmoothLinePlot
+from kivy_garden.graph  import SmoothLinePlot
 
 # Classe que contém os widgets principais
 class MainLayout(BoxLayout):
@@ -206,7 +206,7 @@ class MainLayout(BoxLayout):
         try:
             glycemia_value = float(glycemia_value)
         except (ValueError, TypeError):
-            self.ids.glycemia_status.text = "Valor inválido."
+            #self.ids.glycemia_status.text = "Valor inválido."
             return
         now = datetime.datetime.now()
         day_id = now.strftime("%Y-%m-%d")
@@ -231,7 +231,7 @@ class MainLayout(BoxLayout):
         with open(user_json_path, 'w') as f:
             json.dump(user_data, f, indent=2)
         # atualiza status e limpa input
-        self.ids.glycemia_status.text = f"Glicemia {glycemia_value} mg/dL registrada!"
+        #self.ids.glycemia_status.text = f"Glicemia {glycemia_value} mg/dL registrada!"
         self.ids.glycemia_input.text = ""
         graph_day = self.ids.profile_graph_day
         # atualiza gráfico diário
